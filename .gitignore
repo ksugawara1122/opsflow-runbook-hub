@@ -1,0 +1,12 @@
+node_modules/
+coverage/
+.clasp.json
+.env
+.env.*
+gas/appsscript.json
+*.log
+.DS_Store
+Thumbs.db
+
+# Portfolio screenshots are intentionally included. They contain synthetic data only.
+!portfolio/assets/*.png

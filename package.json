@@ -1,0 +1,15 @@
+{
+  "name": "it-ops-runbook-hub",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Synthetic IT operations request and runbook hub portfolio MVP",
+  "scripts": {
+    "test": "node --test --test-isolation=none tests/*.test.js",
+    "validate:samples": "node scripts/validate-samples.js",
+    "scan:release": "node scripts/scan-public-release.js"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,54 @@
+{
+  "REQ-0001": {
+    "summary_draft": "利用者1名が本日9時ごろからVPNへ接続できず、エラー表示が出ている。",
+    "category_suggestion": "connectivity",
+    "checklist_draft": [
+      "インターネット接続の有無を確認する",
+      "表示されたエラー内容を記録する",
+      "直前の端末・ネットワーク変更有無を確認する"
+    ],
+    "missing_information": [],
+    "runbook_suggestion": "RB-001",
+    "needs_human_review": true
+  },
+  "REQ-0006": {
+    "summary_draft": "利用者1名が本日午後に業務アプリへサインインできず、エラー表示が出ている。",
+    "category_suggestion": "authentication",
+    "checklist_draft": [
+      "対象サービスを確認する",
+      "エラー表示を記録する",
+      "同じ事象が他の利用者にもあるか確認する"
+    ],
+    "missing_information": [],
+    "runbook_suggestion": "RB-002",
+    "needs_human_review": true
+  },
+  "REQ-0011": {
+    "summary_draft": "利用者1名から今月末までの共有フォルダ閲覧申請がある。",
+    "category_suggestion": "access",
+    "checklist_draft": [
+      "対象の共有先を確認する",
+      "必要な操作範囲を確認する",
+      "承認経路を確認する"
+    ],
+    "missing_information": [
+      "承認者"
+    ],
+    "runbook_suggestion": "RB-003",
+    "needs_human_review": true
+  },
+  "REQ-0016": {
+    "summary_draft": "本日15時に定期メンテナンス後の動作確認を行う依頼。",
+    "category_suggestion": "maintenance",
+    "checklist_draft": [
+      "対象機能を確認する",
+      "期待結果を確認する",
+      "確認結果と差異を記録する"
+    ],
+    "missing_information": [
+      "対象機能"
+    ],
+    "runbook_suggestion": "RB-004",
+    "needs_human_review": true
+  }
+}
