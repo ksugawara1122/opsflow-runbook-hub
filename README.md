@@ -16,7 +16,7 @@ appsheet_review_e2e:: accepted-edited-rejected-applied-2026-08-18
 appsheet_app:: owner-only-prototype-applied-and-verified
 appsheet_deployment:: not-deployed
 gemini_connection:: disabled-and-not-deployed-remotely
-public_release:: standalone-candidate-prepared-2026-08-18
+public_repository:: published-2026-08-18
 
 The local scaffold and a private Google-side mock prototype are implemented.
 Local validation still runs without npm dependencies or external network
@@ -58,7 +58,7 @@ Not implemented, activated or deployed:
 - Gemini API calls or billing
 - Real user, employer, client or production data
 - Automated account, permission, credential or production actions
-- Public GitHub repository or marketplace publication
+- Marketplace publication or paid-client deployment
 
 ## What This Demonstrates
 
@@ -214,6 +214,6 @@ it-ops-runbook-hub/
 - The mock classifier is deterministic keyword/rule logic, not a quality claim
   about production AI.
 - Synthetic testing is not equivalent to paid implementation experience.
-- Source code and documentation in the future standalone public package use the
+- Source code and documentation in this standalone public package use the
   MIT License. This does not change the private Google assets or grant access to
   the private AppSheet prototype.
