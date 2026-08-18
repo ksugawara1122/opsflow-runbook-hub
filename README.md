@@ -17,6 +17,8 @@ appsheet_app:: owner-only-prototype-applied-and-verified
 appsheet_deployment:: not-deployed
 gemini_connection:: disabled-and-not-deployed-remotely
 public_repository:: published-2026-08-18
+github_pages:: https://ksugawara1122.github.io/opsflow-runbook-hub/
+portfolio_demo:: 90-second-captioned-synthetic-data-video
 
 The local scaffold and a private Google-side mock prototype are implemented.
 Local validation still runs without npm dependencies or external network
@@ -68,7 +70,7 @@ This project is intended to show more than AI-assisted coding:
 - small internal-tool data modeling;
 - IT operations documentation and Runbook structure;
 - human-in-the-loop AI review;
-- failure handling and audit evidence;
+- failure handling and operation evidence;
 - synthetic-data and secret-handling boundaries;
 - operational documentation for handoff.
 
@@ -118,6 +120,7 @@ Validate schemas, references, mock results and sensitive-pattern checks:
 
 ```powershell
 npm run validate:samples
+npm run validate:site
 npm run scan:release
 ```
 
@@ -125,6 +128,7 @@ Expected result for version 0.1.0:
 
 - 30 automated tests pass
 - 20/20 synthetic requests match the expected mock category and Runbook
+- root redirect, portfolio assets and the MP4/VTT demo pass site validation
 - 0 sensitive-pattern findings in sample content
 - 0 private-asset, identity or credential findings in public text files
 
@@ -132,12 +136,14 @@ Expected result for version 0.1.0:
 
 ```text
 it-ops-runbook-hub/
+  index.html                    # GitHub Pages entry point
   README.md
   LICENSE
   package.json
   portfolio/
     index.html
-    assets/                  # cropped synthetic-only screenshots
+    demo-slides.html            # 90-second video source slides
+    assets/                     # synthetic screenshots, MP4 and VTT
   docs/
     requirements.md
     architecture.md
@@ -166,7 +172,9 @@ it-ops-runbook-hub/
     expected-results.csv
     mock-ai-fixtures.json
   scripts/
+    render-demo-video.ps1
     scan-public-release.js
+    validate-site.js
     validate-samples.js
   tests/
 ```
@@ -195,6 +203,7 @@ it-ops-runbook-hub/
 - [Test report](docs/test-report.md)
 - [Live Google validation](docs/live-google-validation-2026-08-18.md)
 - [Portfolio case study](docs/portfolio-case-study.md)
+- [Published GitHub Pages portfolio](https://ksugawara1122.github.io/opsflow-runbook-hub/)
 - [Local portfolio demo](portfolio/index.html)
 - [AppSheet configuration](app-sheet/configuration-guide.md)
 - [AppSheet views](app-sheet/views.md)

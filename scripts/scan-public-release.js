@@ -5,10 +5,14 @@ const path = require('node:path');
 
 const root = path.resolve(__dirname, '..');
 const textExtensions = new Set([
-  '', '.csv', '.css', '.gitignore', '.gs', '.html', '.js', '.json', '.md', '.txt'
+  '', '.csv', '.css', '.gitignore', '.gs', '.html', '.js', '.json', '.md', '.ps1', '.txt', '.vtt'
 ]);
 const skippedDirectories = new Set(['.git', 'coverage', 'node_modules']);
 const self = path.resolve(__filename);
+const allowedPublicUrls = [
+  'https://github.com/ksugawara1122/opsflow-runbook-hub',
+  'https://ksugawara1122.github.io/opsflow-runbook-hub/'
+];
 
 const checks = [
   ['private Google/AppSheet asset URL', /https?:\/\/(?:docs\.google\.com\/(?:spreadsheets|document|presentation)\/d\/|www\.appsheet\.com\/(?:template\/appdef|start\/))/i],
@@ -33,7 +37,11 @@ for (const file of filesUnder(root)) {
   if (path.resolve(file) === self) continue;
   const extension = path.extname(file).toLowerCase();
   if (!textExtensions.has(extension) && path.basename(file) !== '.gitignore') continue;
-  const content = fs.readFileSync(file, 'utf8');
+  const rawContent = fs.readFileSync(file, 'utf8');
+  const content = allowedPublicUrls.reduce(
+    (current, url) => current.split(url).join('[allowed-public-url]'),
+    rawContent
+  );
   for (const [label, pattern] of checks) {
     const match = content.match(pattern);
     if (!match) continue;

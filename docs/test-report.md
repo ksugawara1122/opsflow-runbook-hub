@@ -19,6 +19,9 @@ appsheet_deployment:: not-deployed
 | Sample validator | `status: ok` |
 | Synthetic request schema | 20 / 20 passed |
 | Mock category and Runbook expectation | 20 / 20 matched |
+| Portfolio site validator | `status: ok`; 3 pages and all local assets resolved |
+| 90-second demo | 90.00 s; H.264 High; 1280 x 720; 30 fps; 2,544,486 bytes |
+| Public release scan | `status: ok`; 45 text files; 0 findings |
 | Runbook records | 4 valid |
 | FAQ records | 8 valid |
 | Explicit mock fixtures | 4 valid |
@@ -47,6 +50,8 @@ appsheet_deployment:: not-deployed
 ```powershell
 npm test
 npm run validate:samples
+npm run validate:site
+npm run scan:release
 ```
 
 ## Covered Behavior
@@ -94,12 +99,25 @@ runner. The project therefore runs Node's test runner in-process with
 `--test-isolation=none`. This changes test-process isolation only; it does not
 skip any test cases.
 
+## Portfolio Demo Verification
+
+The public portfolio includes a 90.00-second, silent H.264 video at 1280 x 720
+and 30 fps. Its nine source frames use only cropped synthetic AppSheet and
+Google Sheets screenshots plus explanatory text. The rendered MP4 is 2,544,486
+bytes and has SHA-256
+`96FCB1F0AA1B5A05BCB4800E3D0274EF7541A3BE5C291133BEABC4401EE00A00`.
+
+Frames sampled at 0, 22, 54 and 84 seconds were visually checked for text
+clipping, account chrome, edit URLs and non-synthetic identifiers. The site
+validator also confirmed the Pages redirect, referenced images, MP4/VTT files,
+non-autoplay controls and project-relative paths.
+
 ## Remaining Verification
 
 - Apps Script time-driven trigger behavior
 - AppSheet deployment, sharing, licensing and role/security-filter behavior
 - Real Gemini endpoint/model behavior, only after separate enablement approval
-- Screen recording and public-export safety review
+- GitHub Pages delivery and remote playback, after the publication setting is enabled
 
 ## Live Google Mock E2E
 

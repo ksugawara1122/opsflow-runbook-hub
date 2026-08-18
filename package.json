@@ -6,6 +6,7 @@
   "scripts": {
     "test": "node --test --test-isolation=none tests/*.test.js",
     "validate:samples": "node scripts/validate-samples.js",
+    "validate:site": "node scripts/validate-site.js",
     "scan:release": "node scripts/scan-public-release.js"
   },
   "engines": {
