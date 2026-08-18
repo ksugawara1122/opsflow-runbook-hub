@@ -74,6 +74,23 @@
       font-size: .82rem;
       font-weight: 700;
     }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 10px 17px;
+      border: 1px solid var(--blue);
+      border-radius: 12px;
+      color: #fff;
+      background: var(--blue);
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .button:hover, .button:focus-visible { background: var(--navy); border-color: var(--navy); }
+    .button-secondary { color: var(--navy); background: rgba(255,255,255,.76); }
+    .button-secondary:hover, .button-secondary:focus-visible { color: #fff; }
     .hero-card {
       padding: 26px;
       border: 1px solid rgba(255,255,255,.75);
@@ -136,6 +153,16 @@
     .sheet-shot { overflow-x: auto; padding: 14px; background: #eef3f7; }
     .sheet-shot img { min-width: 920px; border: 1px solid #c9d1da; }
 
+    .demo-card { overflow: hidden; padding: 14px; }
+    .demo-video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 14px;
+      background: var(--navy);
+    }
+    .demo-meta { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 14px 4px 2px; color: var(--muted); font-size: .86rem; }
+
     .boundary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
     .boundary { padding: 24px; }
     .boundary h3 { margin: 0 0 12px; }
@@ -168,13 +195,17 @@
       <div>
         <p class="eyebrow">Portfolio case study · v0.1.0</p>
         <h1>OpsFlow<br>Runbook Hub</h1>
-        <p class="lead">問い合わせ受付、Runbook参照、AI下書き、人による承認・修正・却下、監査記録をつないだ小規模IT運用MVPです。</p>
+        <p class="lead">問い合わせ台帳・手順書・判断履歴を一つにつなぎ、入力漏れと同じレビューの二重反映を防ぐ小規模業務アプリの試作事例です。</p>
         <div class="badges" aria-label="制作条件">
           <span class="badge">自主制作</span>
           <span class="badge">架空事例</span>
           <span class="badge">合成データのみ</span>
           <span class="badge">AppSheet Not Deployed</span>
         </div>
+        <nav class="actions" aria-label="主要リンク">
+          <a class="button" href="#demo">90秒デモを見る</a>
+          <a class="button button-secondary" href="https://github.com/ksugawara1122/opsflow-runbook-hub" target="_blank" rel="noopener">公開コードと30件のテスト</a>
+        </nav>
       </div>
       <aside class="hero-card" aria-label="技術構成">
         <p>AIを自動判断者にせず、検証可能な下書き作成へ限定。</p>
@@ -188,6 +219,20 @@
       </aside>
     </header>
 
+    <section class="wrap" id="demo" aria-labelledby="demo-title">
+      <p class="eyebrow">90-second demo</p>
+      <h2 id="demo-title">受付から人の確定までを90秒で見る</h2>
+      <p class="section-intro">既存の合成データ画面と検証結果を、字幕付き・音声なしでまとめています。実在の利用者・顧客・アカウント情報は含みません。</p>
+      <div class="card demo-card">
+        <video class="demo-video" controls playsinline preload="metadata" poster="assets/appsheet-home.png" aria-label="OpsFlow Runbook Hubの90秒デモ">
+          <source src="assets/opsflow-demo-90s.mp4" type="video/mp4">
+          <track kind="captions" src="assets/opsflow-demo-90s-ja.vtt" srclang="ja" label="日本語字幕" default>
+          <a href="assets/opsflow-demo-90s.mp4">90秒デモ動画を開く</a>
+        </video>
+        <div class="demo-meta"><span>90秒</span><span>1280 × 720</span><span>H.264</span><span>音声なし</span><span>合成データのみ</span></div>
+      </div>
+    </section>
+
     <section class="wrap" aria-labelledby="proof-title">
       <p class="eyebrow">Verified evidence</p>
       <h2 id="proof-title">動いたことを数字と証跡で示す</h2>
@@ -196,7 +241,7 @@
         <div class="metric"><b>30 / 30</b><span>自動テスト合格</span></div>
         <div class="metric"><b>20 / 20</b><span>mock期待結果一致</span></div>
         <div class="metric"><b>3</b><span>accepted / edited / rejected</span></div>
-        <div class="metric"><b>6</b><span>監査イベント</span></div>
+        <div class="metric"><b>6</b><span>操作イベント</span></div>
       </div>
     </section>
 
@@ -207,8 +252,8 @@
         <li class="card"><small>01</small><strong>合成依頼を登録</strong></li>
         <li class="card"><small>02</small><strong>mock AIが下書き</strong></li>
         <li class="card"><small>03</small><strong>人が承認・修正・却下</strong></li>
-        <li class="card"><small>04</small><strong>GASが安全条件を再検証</strong></li>
-        <li class="card"><small>05</small><strong>確定項目と監査証跡を保存</strong></li>
+        <li class="card"><small>04</small><strong>GASが入力条件を再検証</strong></li>
+        <li class="card"><small>05</small><strong>確定項目と操作履歴を保存</strong></li>
       </ol>
     </section>
 
@@ -226,12 +271,12 @@
     </section>
 
     <section class="wrap" aria-labelledby="audit-title">
-      <p class="eyebrow">Audit trail</p>
+      <p class="eyebrow">Decision trail</p>
       <h2 id="audit-title">判断と処理を別レコードで追跡</h2>
       <p class="section-intro">承認・修正・却下をAI Draftから分離し、同じreviewを再実行してもイベントが増えないことを確認しています。</p>
       <div class="sheet-grid">
         <figure class="card"><div class="sheet-shot"><img src="assets/sheet-reviews.png" alt="accepted edited rejectedの三件を保存したAI Reviewsシート"></div><figcaption><b>AI Reviews</b><span>accepted / edited / rejectedを各1件保存</span></figcaption></figure>
-        <figure class="card"><div class="sheet-shot"><img src="assets/sheet-events.png" alt="六件の監査イベントを保存したRequest Eventsシート"></div><figcaption><b>Request Events</b><span>下書き準備3件、レビュー確定3件</span></figcaption></figure>
+        <figure class="card"><div class="sheet-shot"><img src="assets/sheet-events.png" alt="六件の操作イベントを保存したRequest Eventsシート"></div><figcaption><b>Request Events</b><span>下書き準備3件、レビュー確定3件</span></figcaption></figure>
       </div>
     </section>
 
